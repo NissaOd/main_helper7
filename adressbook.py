@@ -322,28 +322,27 @@ def clear_all(contacts, *args):
 
 def info(*args):
     return """
-    *********** Service command ***********
-    "help", "?"          --> Commands list
-    "close", "exit", "." --> Exit from AddressBook
     
-    *********** Add/edit command **********
-    "add" name phone         --> Add user to AddressBook (for exampe +380.......)
-    "change" name old_phone new_phone --> Change the user's phone number (for exampe +380.......)
-    "birthday" name birthday --> Add/edit user birthday(dd.mm.yyyy)
-    "email" name email       --> Add/edit user email
-    "address" name address   --> Add/edit user address
+    add name phone         - Add user to AddressBook 
+    change name old_phone new_phone - Change the user's phone number 
+    birthday" name birthday - Add/edit user birthday(dd.mm.yyyy)
+    email" name email       - Add/edit user email
+    address" name address   - Add/edit user address
+    ____________________________________________________
+    show name      - Show user info
+    show all       - Show all users info
+    find sub       - Show all users info  with sub in name, phones or birthday
+    _____________________________________________________
+    del name phone - Delete phone number
+    delete name    - Delete user
+    clear          - Delete all users
+    ______________________________________________________
+    days to birthday name - Show how many days to user birthday
+    users birthday D - Show users with birthday in D days
+    ______________________________________________________
+    help, ?          - Commands list
+    close, exit, "." - Exit from AddressBook
     
-    *********** Delete command ***********
-    "del" name phone --> Delete phone number
-    "delete" name    --> Delete user
-    "clear"          --> Delete all users
-    
-    *********** Info command *************
-    "show" name      --> Show user info
-    "show all"       --> Show all users info
-    "find" sub       --> Show all users info  with sub in name, phones or birthday
-    "days to birthday" name --> Show how many days to user birthday
-    "users birthday N" --> Show users with birthday in N days
     """
 
 
@@ -351,7 +350,7 @@ def unknown_command(*args):
     return 'Unknown command! Enter again!'
 
 
-file_name = 'AddressBook.bin'
+file_name = 'AB.bin'
 
 
 def writing_db(ab):
@@ -401,7 +400,7 @@ def main():
     contacts = reading_db()
     print(info())
     while True:
-        user_command = input('Enter command:>>> ')
+        user_command = input('Write command:>>> ')
         if user_command == 'exit':
             return f'Exit'
         command, data = command_parser(user_command)

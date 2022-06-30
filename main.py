@@ -1,37 +1,28 @@
-from .adressbook import main as amain
-from .cleanfolder import main as clean_main
-from .notebook import main as note_book
+from .adressbook import main as ab
+from .cleanfolder import main as cm
 
 
-# main функція проекту
 def main():
     while True:
-        print('Menu:',
-              '1. AddressBook',
-              '2. NoteBook',
-              '3. CleanFolder',
-              '4. Close program', sep='\n')
-        user_command = input('Press menu button: >>> ')
+        print('Choose command:',
+            '1. AddressBook',
+            '2. CleanFolder',
+            '3. Close program', sep='\n')
+        user_command = input('Choose function: >>> ')
         if user_command == '1':
-            print('*'*60, 'AddressBook Manager', '*'*60, sep='\n')
-            result = amain()
+            print('AddressBook Manager')
+            result = ab()
             if result == 'Exit':
                 continue
 
         elif user_command == '2':
-            print('*' * 60, 'NoteBook Manager: ', '*' * 60, sep='\n')
-            result = note_book()
+            print('CleanFolder')
+            result = cm()
             if result == 'Exit':
                 continue
 
         elif user_command == '3':
-            print('*'*60, 'CleanFolder manager', '*'*60, sep='\n')
-            result = clean_main()
-            if result == 'Exit':
-                continue
-
-        elif user_command == '4':
-            print('Good bye!')
+            print('See you later!')
             break
 
 

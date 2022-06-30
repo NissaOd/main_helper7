@@ -48,7 +48,7 @@ def handle_folder(folder: Path):
 
 
 def file_parser(*args):
-    star = '*' * 60
+    star = '-' * 40
     try:
         folder_for_scan = Path(args[0])
         scan(folder_for_scan.resolve())
@@ -117,7 +117,7 @@ def file_parser(*args):
     for folder in FOLDERS[::-1]:
         handle_folder(folder)
 
-    return f'{star}''\n'f"Files in {args[0]} sorted succesffully"'\n'f'{star}'
+    return f'{star}''\n'f"Your folder {args[0]} was cleaned"'\n'f'{star}'
 
 
 COMMANDS = {file_parser: ['clean', 'clear'], goodbye: ['good bye', 'close', 'exit', '.']}
@@ -139,20 +139,18 @@ def command_parser(user_command: str, COMMANDS: dict) -> (str, list):
 
 def main():
     while True:
-        print('Print clean and address your folder',
-              'for MacOS: clean /Folder/Trash',
-              'for Windows: clean C:\Folder\Trash', sep='\n')
-        user_command = input('Enter you command >>> ')
+        print('Write clean and folder address')
+        user_command = input('Write command >>> ')
         command, data = command_parser(user_command, COMMANDS)
         print(command(*data))
-        print('Do you have some folder for clean?')
-        var = input('Press: y/n >>> ')
-        if var == 'y':
-            print('*' * 60)
-            continue
-        elif var == 'n':
-            break
-        elif command is goodbye:
+        # print('Do you have some folder for clean?')
+        # var = input('Press: y/n >>> ')
+        # if var == 'y':
+        #     print('*' * 60)
+        #     continue
+        # elif var == 'n':
+        #     break
+        if command is goodbye:
             break
 
 
